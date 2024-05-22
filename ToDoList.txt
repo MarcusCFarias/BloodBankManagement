@@ -1,0 +1,55 @@
+---------------------------------- MÓDULOS PARA TRABALHAR EM CIMA ----------------------------------
+
+Authentication and Authorization JWT (Não implementar isso, pois não há necessidade)
+- Configurar
+- Adicionar Claims, Policies e Roles
+- BCrypto
+
+Camada API
+- Configurar serviços
+- Rate Limit
+
+Camada Application
+- CQRS
+- Result Pattern
+- Fluent Validation
+- Middleware (lidar com exceções)
+
+Camada Domain
+- Domain Event
+- Repository
+
+Camada Infraestrutura
+- IEntityTipeConfiguration e Repository
+- External API
+
+Camada Testes
+- Mapear o que precisa ser testado
+
+Docker
+- Aprender do zero
+
+Funcionalidades
+- CRUD Doadores (Fluent Validation + External API)
+-- No cadastro de endereço integrar API externa para consulta CEP. 
+- CRUD Estoque (Events)
+-- Avisar quando o estoque atingir a quantidade mínima definida. (e-mail)
+- CRUD Doações
+-- Atualizar o estoque de sangue sempre que registrar uma doação. (evento)
+- Relatórios
+-- Consultar o histórico de doações de um doador.
+-- Gerar um relatório sobre a quantidade total de sangue por tipo disponível.
+-- Relatório de doações nos últimos 30 dias com informações dos doadores.
+
+Regras de Negócio
+
+- Não deixar cadastrar um doador com o mesmo e-mail.
+- Menor de idade não pode doar, mas pode ter cadastro.
+- Pesar no mínimo 50KG.
+- Mulheres só podem doar de 90 em 90 dias.(PLUS)
+- Homens só podem doar de 60 em 60 dias. (PLUS)
+- Quantidade de mililitros de sangue doados deve ser entre 420ml e 470ml (PLUS)
+
+DÚVIDAS QUE VÃO SURGINDO:
+
+----------------------------------------------------------------------------------------------------------

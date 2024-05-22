@@ -1,0 +1,6 @@
+@BloodBankManagement.API_HostAddress = http://localhost:5192
+
+GET {{BloodBankManagement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
