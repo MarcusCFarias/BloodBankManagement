@@ -11,6 +11,7 @@ namespace BloodBankManagement.Domain.Entities
     public class Donor : BaseEntity
     {
         //EF needs a parameterless constructor to instantiate the object before setting the property values
+        private Donor() { }
         public Donor(string fullName, string email, DateTime birthDate, GenderEnum gender,
             double weight, BloodTypeEnum bloodType, RhFactorEnum rhFactor, Address address)
         {

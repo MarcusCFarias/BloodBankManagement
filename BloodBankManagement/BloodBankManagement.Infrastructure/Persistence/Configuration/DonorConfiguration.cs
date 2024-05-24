@@ -54,7 +54,7 @@ namespace BloodBankManagement.Infrastructure.Persistence.Configuration
                 address.Property(p => p.City).HasMaxLength(25).IsRequired();
                 address.Property(p => p.PublicArea).HasMaxLength(50).IsRequired();
                 address.Property(p => p.State).HasMaxLength(25).IsRequired();
-                address.Property(p => p.ZipCode).HasMaxLength(9).IsRequired();
+                address.Property(p => p.Cep).HasMaxLength(8).IsRequired();
             });
 
             //builder.HasData(

@@ -1,12 +1,19 @@
-﻿using BloodBankManagement.Infrastructure;
+﻿using BloodBankManagement.Application;
+using BloodBankManagement.Infrastructure;
 
 namespace BloodBankManagement.API.Configuration
 {
     internal static class ConfigureServices
     {
-        public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddAllServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddInfrastructure(configuration);
+            services.AddInfrastructureLayer(configuration);
+            services.AddApplicationLayer();
+
+            services.AddControllers();
+            
+            services.AddEndpointsApiExplorer();
+            services.AddSwaggerGen();
 
             return services;
         }

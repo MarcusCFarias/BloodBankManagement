@@ -14,7 +14,7 @@ namespace BloodBankManagement.Infrastructure
 {
     public static class ConfigureServices
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddInfrastructureLayer(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDataBaseContext(configuration);
             services.AddRepositories();

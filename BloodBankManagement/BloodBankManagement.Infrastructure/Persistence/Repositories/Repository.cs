@@ -11,7 +11,7 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly ApplicationDbContext _context;
+        protected readonly ApplicationDbContext _context;
         protected Repository(ApplicationDbContext dbContext)
         {
             _context = dbContext;
