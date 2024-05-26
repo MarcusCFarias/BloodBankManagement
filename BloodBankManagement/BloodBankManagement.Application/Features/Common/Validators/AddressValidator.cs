@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCommand
+namespace BloodBankManagement.Application.Features.Common.Validators
 {
     public class AddressValidator : AbstractValidator<Address>
     {

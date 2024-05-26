@@ -1,4 +1,5 @@
 ﻿using BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCommand;
+using BloodBankManagement.Application.Features.Donors.Commands.UpdateDonorCommand;
 using BloodBankManagement.Application.Features.Donors.Queries.GetAllDonor;
 using BloodBankManagement.Application.Features.Donors.Queries.GetDonorByIdQuery;
 using MediatR;
@@ -42,7 +43,7 @@ namespace BloodBankManagement.API.Controllers
             return NotFound(result.Error);
         }
 
-        [HttpPost]
+        [HttpPost()]
         public async Task<IActionResult> Create([FromBody] CreateDonorCommand command)
         {
             var result = await _mediator.Send(command);
@@ -54,11 +55,14 @@ namespace BloodBankManagement.API.Controllers
         }
 
         [HttpPut]
-        public async Task<IActionResult> Update(/*[FromBody] UpdateDonorCommand command*/)
+        public async Task<IActionResult> Update([FromBody] UpdateDonorCommand command)
         {
-            //var donorId = await _mediator.Send(command);
+            var result = await _mediator.Send(command);
 
-            return Ok();
+            if (result.IsSuccess)
+                return Ok(result);
+
+            return BadRequest(result.Error);
         }
     }
 }

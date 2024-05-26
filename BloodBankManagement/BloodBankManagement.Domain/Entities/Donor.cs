@@ -24,7 +24,6 @@ namespace BloodBankManagement.Domain.Entities
             RhFactor = rhFactor;
             Address = address;
         }
-
         public string FullName { get; private set; }
         public string Email { get; private set; }
         public DateTime BirthDate { get; private set; }
@@ -34,5 +33,11 @@ namespace BloodBankManagement.Domain.Entities
         public RhFactorEnum RhFactor { get; private set; }
         public Address Address { get; private set; }
         public ICollection<Donation> Donations { get; private set; }
+        public void UpdateDonor(string email, double weight, Address address)
+        {
+            Email = email;
+            Weight = weight;
+            Address = address;
+        }
     }
 }
