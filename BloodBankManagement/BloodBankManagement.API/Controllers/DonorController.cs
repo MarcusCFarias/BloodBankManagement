@@ -4,6 +4,7 @@ using BloodBankManagement.Application.Features.Donors.Queries.GetDonorByIdQuery;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace BloodBankManagement.API.Controllers
 {
@@ -16,7 +17,7 @@ namespace BloodBankManagement.API.Controllers
         {
             _mediator = mediator;
         }
-        
+
         [HttpGet]
         public async Task<IActionResult> GetAll([FromQuery] int page = 1, int pageSize = 10)
         {
@@ -28,7 +29,7 @@ namespace BloodBankManagement.API.Controllers
 
             return NotFound(result.Error);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -40,25 +41,20 @@ namespace BloodBankManagement.API.Controllers
 
             return NotFound(result.Error);
         }
-        
+
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDonorCommand command)
         {
-            var donorId = await _mediator.Send(command);
+            var result = await _mediator.Send(command);
 
-            return Ok(donorId);
+            if (result.IsSuccess)
+                return CreatedAtAction(nameof(GetById), new { id = result.Data }, command);
+
+            return BadRequest(result.Error);
         }
-        
+
         [HttpPut]
         public async Task<IActionResult> Update(/*[FromBody] UpdateDonorCommand command*/)
-        {
-            //var donorId = await _mediator.Send(command);
-
-            return Ok();
-        }
-        
-        [HttpDelete]
-        public async Task<IActionResult> Delete(/*[FromBody] DeleteDonorCommand command*/)
         {
             //var donorId = await _mediator.Send(command);
 

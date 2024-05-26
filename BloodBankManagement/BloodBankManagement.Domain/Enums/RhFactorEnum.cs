@@ -8,7 +8,7 @@ namespace BloodBankManagement.Domain.Enums
 {
     public enum RhFactorEnum
     {
-        Positive = 0,
-        Negative = 1
+        Positive = 1,
+        Negative = 2
     }
 }

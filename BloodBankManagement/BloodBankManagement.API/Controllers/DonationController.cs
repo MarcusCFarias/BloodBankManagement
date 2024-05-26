@@ -7,7 +7,6 @@ namespace BloodBankManagement.API.Controllers
     public class DonationController : ControllerBase
     {
         //criar
-        //getById
         //get report
 
     }

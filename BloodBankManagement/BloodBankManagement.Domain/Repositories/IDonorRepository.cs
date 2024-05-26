@@ -9,5 +9,6 @@ namespace BloodBankManagement.Domain.Repositories
 {
     public interface IDonorRepository : IRepository<Donor>
     {
+        Task<bool> EmailAlreadyRegistered(string email);
     }
 }

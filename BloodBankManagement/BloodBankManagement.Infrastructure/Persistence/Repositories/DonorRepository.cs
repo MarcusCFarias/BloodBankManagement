@@ -13,5 +13,13 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
         public DonorRepository(ApplicationDbContext dbContext) : base(dbContext)
         {
         }
+
+        public async Task<bool> EmailAlreadyRegistered(string email)
+        {
+            return _context
+                .Set<Donor>()
+                .Where(x => x.Email == email)
+                .Any();
+        }
     }
 }

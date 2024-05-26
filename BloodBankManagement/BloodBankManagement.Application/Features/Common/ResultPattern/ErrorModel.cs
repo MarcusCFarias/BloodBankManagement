@@ -11,7 +11,8 @@ namespace BloodBankManagement.Application.Features.Common.Result
         None = 0,
         NotFound = 1,
         BadRequest = 2,
-        InternalServerError = 3
+        InternalServerError = 3,
+        AlreadyRegistered = 4
     }
     public class ErrorModel
     {
