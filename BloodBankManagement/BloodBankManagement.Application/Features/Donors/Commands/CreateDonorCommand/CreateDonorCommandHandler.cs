@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using BloodBankManagement.Domain.ValueObjects;
 using BloodBankManagement.Application.Features.Common.Result;
+using BloodBankManagement.Application.Features.Common.Interfaces;
 
 namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCommand
 {
     public class CreateDonorCommandHandler : IRequestHandler<CreateDonorCommand, Result<int>>
     {
         private readonly IDonorRepository _donorRepository;
-        public CreateDonorCommandHandler(IDonorRepository donorRepository)
+        private readonly IAddressService _addressService;
+        public CreateDonorCommandHandler(IDonorRepository donorRepository, IAddressService addressService)
         {
             _donorRepository = donorRepository;
+            _addressService = addressService;
         }
 
         public async Task<Result<int>> Handle(CreateDonorCommand request, CancellationToken cancellationToken)
@@ -25,14 +28,19 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
             if (boolRegisteredEmail)
             {
                 var errorModel = new ErrorModel(
-                    ErrorEnum.AlreadyRegistered, 
-                    ErrorEnum.AlreadyRegistered.ToString(), 
+                    ErrorEnum.AlreadyRegistered,
+                    ErrorEnum.AlreadyRegistered.ToString(),
                     "Email already registered.");
 
                 return Result<int>.Failure(errorModel);
             }
 
-            //adicionar validação de CEP dos correios
+            var externalAddress = await _addressService.GetAddress(request.Cep);
+
+            if (externalAddress.IsFailure)
+                return Result<int>.Failure(externalAddress.Error);
+
+            var address = externalAddress.Data;
 
             var donor = new Donor(request.FullName,
                 request.Email,
@@ -41,7 +49,7 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
                 request.Weight,
                 request.BloodType,
                 request.RhFactor,
-                request.Address);
+                address);
 
             var donorId = await _donorRepository.AddAsync(donor, cancellationToken);
 

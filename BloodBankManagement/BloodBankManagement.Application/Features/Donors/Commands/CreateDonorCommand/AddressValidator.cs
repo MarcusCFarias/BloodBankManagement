@@ -12,17 +12,17 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
     {
         public AddressValidator()
         {
-            RuleFor(p => p.City)
+            RuleFor(p => p.Localidade)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .MaximumLength(25).WithMessage("{PropertyName} must not exceed 25 characters.");
 
-            RuleFor(p => p.PublicArea)
+            RuleFor(p => p.Logradouro)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .MaximumLength(50).WithMessage("{PropertyName} must not exceed 50 characters.");
 
-            RuleFor(p => p.State)
+            RuleFor(p => p.Uf)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .NotNull()
                 .MaximumLength(25).WithMessage("{PropertyName} must not exceed 25 characters.");

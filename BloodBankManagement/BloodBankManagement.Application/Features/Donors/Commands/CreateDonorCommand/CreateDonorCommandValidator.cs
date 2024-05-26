@@ -48,9 +48,11 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
                 .NotNull()
                 .NotEmpty();
 
-            RuleFor(p => p.Address)
+            RuleFor(p => p.Cep)
                 .NotNull()
-                .SetValidator(new AddressValidator());
+                .Length(8, 8)
+                .WithMessage("{PropertyName} must be equal to 8.");
+                
         }
     }
 }

@@ -18,6 +18,7 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
         double Weight,
         BloodTypeEnum BloodType,
         RhFactorEnum RhFactor,
-        Address Address
+        string Cep
+        //Address Address
         ) : IRequest<Result<int>>;
 }

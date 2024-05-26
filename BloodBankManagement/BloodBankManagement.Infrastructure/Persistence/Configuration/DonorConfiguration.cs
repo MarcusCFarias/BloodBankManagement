@@ -51,9 +51,9 @@ namespace BloodBankManagement.Infrastructure.Persistence.Configuration
 
             builder.OwnsOne(x => x.Address, address =>
             {
-                address.Property(p => p.City).HasMaxLength(25).IsRequired();
-                address.Property(p => p.PublicArea).HasMaxLength(50).IsRequired();
-                address.Property(p => p.State).HasMaxLength(25).IsRequired();
+                address.Property(p => p.Localidade).HasMaxLength(25);//.IsRequired();
+                address.Property(p => p.Logradouro).HasMaxLength(50);//.IsRequired();
+                address.Property(p => p.Uf).HasMaxLength(25);//.IsRequired();
                 address.Property(p => p.Cep).HasMaxLength(8).IsRequired();
             });
 

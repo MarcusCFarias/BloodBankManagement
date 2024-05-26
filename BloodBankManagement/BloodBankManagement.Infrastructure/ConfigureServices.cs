@@ -1,6 +1,8 @@
-﻿using BloodBankManagement.Domain.Repositories;
+﻿using BloodBankManagement.Application.Features.Common.Interfaces;
+using BloodBankManagement.Domain.Repositories;
 using BloodBankManagement.Infrastructure.Persistence;
 using BloodBankManagement.Infrastructure.Persistence.Repositories;
+using BloodBankManagement.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -18,6 +20,7 @@ namespace BloodBankManagement.Infrastructure
         {
             services.AddDataBaseContext(configuration);
             services.AddRepositories();
+            services.AddExternalServices();
 
             return services;
         }
@@ -26,6 +29,7 @@ namespace BloodBankManagement.Infrastructure
             services.AddScoped<IBloodStorageRepository, BloodStorageRepository>();
             services.AddScoped<IDonorRepository, DonorRepository>();
             services.AddScoped<IDonationRepository, DonationRepository>();
+            
         }
         private static void AddDataBaseContext(this IServiceCollection services, IConfiguration configuration)
         {
@@ -33,6 +37,12 @@ namespace BloodBankManagement.Infrastructure
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
             });
+        }
+
+        private static void AddExternalServices(this IServiceCollection services)
+        {
+            services.AddHttpClient();
+            services.AddScoped<IAddressService, AddressService>();
         }
     }
 }
