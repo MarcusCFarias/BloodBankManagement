@@ -1,6 +1,10 @@
 ﻿using BloodBankManagement.Domain.Entities;
+using BloodBankManagement.Domain.Events;
 using BloodBankManagement.Domain.Repositories;
+using MediatR;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +32,7 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
         public async Task DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync(cancellationToken);
+            await SaveChangesAsync(cancellationToken);
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsync(int page, int pageSize = 10, CancellationToken cancellationToken = default)
@@ -47,9 +51,14 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
                 .SingleOrDefaultAsync(e => e.Id == id, cancellationToken);
         }
 
-        public async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
+        public virtual async Task UpdateAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             _context.Set<TEntity>().Update(entity);
+            await SaveChangesAsync(cancellationToken);
+        }
+
+        protected async Task SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
             await _context.SaveChangesAsync(cancellationToken);
         }
     }

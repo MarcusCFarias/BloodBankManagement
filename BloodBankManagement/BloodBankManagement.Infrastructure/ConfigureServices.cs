@@ -1,4 +1,5 @@
-﻿using BloodBankManagement.Application.Features.Common.Interfaces;
+﻿using BloodBankManagement.Application.Features.Common.Interfaces;using BloodBankManagement.Application.Features.Events;
+using BloodBankManagement.Domain.Events;
 using BloodBankManagement.Domain.Repositories;
 using BloodBankManagement.Infrastructure.Persistence;
 using BloodBankManagement.Infrastructure.Persistence.Repositories;
@@ -29,7 +30,6 @@ namespace BloodBankManagement.Infrastructure
             services.AddScoped<IBloodStorageRepository, BloodStorageRepository>();
             services.AddScoped<IDonorRepository, DonorRepository>();
             services.AddScoped<IDonationRepository, DonationRepository>();
-            
         }
         private static void AddDataBaseContext(this IServiceCollection services, IConfiguration configuration)
         {

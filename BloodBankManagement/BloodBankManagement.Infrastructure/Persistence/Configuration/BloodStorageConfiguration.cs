@@ -30,6 +30,9 @@ namespace BloodBankManagement.Infrastructure.Persistence.Configuration
                 .HasColumnType("int")
                 .IsRequired();
 
+            builder.HasIndex(e => new { e.BloodType, e.RhFactor })
+                .IsUnique();
+
             //builder.HasData(
             //    new BloodStorage(BloodTypeEnum.O, RhFactorEnum.Negative, 500));
         }

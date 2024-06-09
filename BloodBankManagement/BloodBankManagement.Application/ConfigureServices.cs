@@ -1,5 +1,9 @@
-﻿using FluentValidation;
+﻿using BloodBankManagement.Application.Features.BloodStorage;
+using BloodBankManagement.Application.Features.Events;
+using BloodBankManagement.Domain.Events;
+using FluentValidation;
 using FluentValidation.AspNetCore;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
