@@ -9,5 +9,6 @@ namespace BloodBankManagement.Domain.Repositories
 {
     public interface IBloodStorageRepository : IRepository<BloodStorage>
     {
+        Task<IEnumerable<BloodStorage>> GetAllAsync(CancellationToken cancellationToken = default);
     }
 }

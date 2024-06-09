@@ -9,6 +9,7 @@ namespace BloodBankManagement.Domain.Repositories
 {
     public interface IDonorRepository : IRepository<Donor>
     {
-        Task<bool> EmailAlreadyRegistered(string email);
+        Task<bool> EmailAlreadyRegistered(string email, CancellationToken cancellationToken = default(CancellationToken));
+        Task<Donor?> GetDonorByIdWithDonations(int donorId, CancellationToken cancellationToken = default(CancellationToken));
     }
 }

@@ -24,7 +24,7 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
 
         public async Task<Result<int>> Handle(CreateDonorCommand request, CancellationToken cancellationToken)
         {
-            var boolRegisteredEmail = await _donorRepository.EmailAlreadyRegistered(request.Email);
+            var boolRegisteredEmail = await _donorRepository.EmailAlreadyRegistered(request.Email, cancellationToken);
             if (boolRegisteredEmail)
             {
                 var errorModel = new ErrorModel(

@@ -1,5 +1,6 @@
 ﻿using BloodBankManagement.Domain.Entities;
 using BloodBankManagement.Domain.Repositories;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,12 +15,17 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
         {
         }
 
-        public async Task<bool> EmailAlreadyRegistered(string email)
+        public async Task<bool> EmailAlreadyRegistered(string email, CancellationToken cancellationToken = default(CancellationToken))
         {
-            return _context
-                .Set<Donor>()
-                .Where(x => x.Email == email)
-                .Any();
+            return await _context.Set<Donor>().Where(x => x.Email == email).AnyAsync(cancellationToken);
+        }
+
+        public async Task<Donor?> GetDonorByIdWithDonations(int donorId, CancellationToken cancellationToken = default)
+        {
+            return await _context.Set<Donor>()
+                .Where(x => x.Id == donorId)
+                .Include(x => x.Donations)
+                .SingleOrDefaultAsync(cancellationToken);
         }
     }
 }

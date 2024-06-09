@@ -9,5 +9,6 @@ namespace BloodBankManagement.Domain.Repositories
 {
     public interface IDonationRepository : IRepository<Donation>
     {
+        public Task<IEnumerable<Donation>> GetHistoryLast30DaysAsync(CancellationToken cancellationToken = default);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BloodBankManagement.Domain.Enums;
+using BloodBankManagement.Domain.Repositories;
 using BloodBankManagement.Domain.ValueObjects;
 using System;
 using System.Collections.Generic;
@@ -32,12 +33,48 @@ namespace BloodBankManagement.Domain.Entities
         public BloodTypeEnum BloodType { get; private set; }
         public RhFactorEnum RhFactor { get; private set; }
         public Address Address { get; private set; }
-        public ICollection<Donation> Donations { get; private set; }
-        public void UpdateDonor(string email, double weight, Address address)
+        public ICollection<Donation> Donations { get; set; }      
+
+        public bool CanDonateBlood(int quantityMl)
         {
-            Email = email;
-            Weight = weight;
-            Address = address;
+            if (!ValidWeightToDonate(Weight))
+                return false;
+
+            if (!ValidAgeToDonate(BirthDate))
+                return false;
+
+            if (!ValidQuantityToDonate(quantityMl))
+                return false;
+
+            var lastDonation = Donations.LastOrDefault();
+            if (lastDonation != null)
+            {
+                if (!ValidDonationInterval(lastDonation.DonationDate))
+                    return false;
+            }
+
+            return true;
+        }
+        private bool ValidWeightToDonate(double weight)
+        {
+            double minimumWeight = 50;
+            return weight >= minimumWeight;
+        }
+        private bool ValidAgeToDonate(DateTime birthDate)
+        {
+            int majorAge = 18;
+            return (DateTime.Now.Year - birthDate.Year) >= majorAge;
+        }
+        private bool ValidQuantityToDonate(int quantityMl)
+        {
+            int minimumQuantityMl = 420;
+            int maximumQuantityMl = 470;
+            return quantityMl >= minimumQuantityMl && quantityMl <= maximumQuantityMl;
+        }
+        private bool ValidDonationInterval(DateTime lastDonationDate)
+        {
+            int minimumDaysBetweenDonations = Gender == GenderEnum.Male ? -60 : -90;
+            return DateTime.Now.AddDays(minimumDaysBetweenDonations) > lastDonationDate;
         }
     }
 }

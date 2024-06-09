@@ -1,7 +1,6 @@
 ﻿using BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCommand;
-using BloodBankManagement.Application.Features.Donors.Commands.UpdateDonorCommand;
-using BloodBankManagement.Application.Features.Donors.Queries.GetAllDonor;
 using BloodBankManagement.Application.Features.Donors.Queries.GetDonorByIdQuery;
+using BloodBankManagement.Application.Features.Donors.Queries.GetDonorHistory;
 using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -19,18 +18,6 @@ namespace BloodBankManagement.API.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll([FromQuery] int page = 1, int pageSize = 10)
-        {
-            var query = new GetAllDonorsQuery(page, pageSize);
-            var result = await _mediator.Send(query);
-
-            if (result.IsSuccess)
-                return Ok(result.Data);
-
-            return NotFound(result.Error);
-        }
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -43,7 +30,7 @@ namespace BloodBankManagement.API.Controllers
             return NotFound(result.Error);
         }
 
-        [HttpPost()]
+        [HttpPost]
         public async Task<IActionResult> Create([FromBody] CreateDonorCommand command)
         {
             var result = await _mediator.Send(command);
@@ -53,16 +40,16 @@ namespace BloodBankManagement.API.Controllers
 
             return BadRequest(result.Error);
         }
-
-        [HttpPut]
-        public async Task<IActionResult> Update([FromBody] UpdateDonorCommand command)
+        [HttpGet("history")]
+        public async Task<IActionResult> GetDonorHistory(int donorId)
         {
-            var result = await _mediator.Send(command);
+            var query = new GetDonorHistoryQuery(donorId);
+            var result = await _mediator.Send(query);
 
             if (result.IsSuccess)
-                return Ok(result);
+                return Ok(result.Data);
 
-            return BadRequest(result.Error);
+            return NotFound(result.Error);
         }
     }
 }
