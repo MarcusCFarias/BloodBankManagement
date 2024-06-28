@@ -1,4 +1,5 @@
-﻿using BloodBankManagement.Application;
+﻿using BloodBankManagement.API.Middlewares;
+using BloodBankManagement.Application;
 using BloodBankManagement.Infrastructure;
 
 namespace BloodBankManagement.API.Configuration
@@ -14,6 +15,7 @@ namespace BloodBankManagement.API.Configuration
             
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
+            services.AddExceptionHandler<GlobalExpectionHandler>();
 
             return services;
         }

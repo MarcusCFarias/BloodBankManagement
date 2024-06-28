@@ -12,6 +12,8 @@ namespace BloodBankManagement.API
 
             var app = builder.Build();
             app.ConfigureAllApp();
+
+            app.Logger.LogInformation("Application started");
             app.Run();
         }
     }

@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  bloodbankmanagement.api:
+    image: ${DOCKER_REGISTRY-}bloodbankmanagementapi
+    build:
+      context: .
+      dockerfile: BloodBankManagement.API\Dockerfile

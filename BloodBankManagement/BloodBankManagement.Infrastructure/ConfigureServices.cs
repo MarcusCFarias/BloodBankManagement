@@ -1,4 +1,5 @@
-﻿using BloodBankManagement.Application.Features.Common.Interfaces;using BloodBankManagement.Application.Features.Events;
+﻿using BloodBankManagement.Application.Features.Common.Interfaces;
+using BloodBankManagement.Application.Features.Events;
 using BloodBankManagement.Domain.Events;
 using BloodBankManagement.Domain.Repositories;
 using BloodBankManagement.Infrastructure.Persistence;
@@ -33,9 +34,17 @@ namespace BloodBankManagement.Infrastructure
         }
         private static void AddDataBaseContext(this IServiceCollection services, IConfiguration configuration)
         {
+            
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                //var host = Environment.GetEnvironmentVariable("DB_HOST");
+                //var name = Environment.GetEnvironmentVariable("DB_NAME");
+                //var user = Environment.GetEnvironmentVariable("DB_USER");
+                //var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
+                var connectionString = configuration.GetConnectionString("DefaultConnection");
+                //var connectionString = $"Server={host};Database={name};User Id={user};Password={password};Trusted_Connection=True;MultipleActiveResultSets=true";
+
+                options.UseSqlServer(connectionString);
             });
         }
 
@@ -44,5 +53,7 @@ namespace BloodBankManagement.Infrastructure
             services.AddHttpClient();
             services.AddScoped<IAddressService, AddressService>();
         }
+
+       
     }
 }

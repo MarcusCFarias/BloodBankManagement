@@ -16,10 +16,10 @@ namespace BloodBankManagement.Domain.Entities
             _domainEvents ??= new List<IDomainEvent>();
             _domainEvents.Add(eventItem);
         }
-        protected void ClearDomainEvents()
-        {
-            _domainEvents.Clear();
-        }
+        //protected void ClearDomainEvents()
+        //{
+        //    _domainEvents.Clear();
+        //}
         public int Id { get; private set; }
     }
 }

@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodBankManagement.Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodBankManagement.Application", "BloodBankManagement.Application\BloodBankManagement.Application.csproj", "{C788A19D-FBD1-4BD3-B564-FA458CB682E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankManagement.UnitTests", "BloodBankManagement.UnitTests\BloodBankManagement.UnitTests.csproj", "{0855E84B-5319-4C26-9112-D6BD13C76750}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A9561BD-DB4C-46F0-ADE5-6F3282D49156}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankManagement.UnitTests", "BloodBankManagement.UnitTests\BloodBankManagement.UnitTests.csproj", "{44989127-068C-4B25-AA5C-23EF5D3FE956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +37,10 @@ Global
 		{C788A19D-FBD1-4BD3-B564-FA458CB682E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C788A19D-FBD1-4BD3-B564-FA458CB682E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C788A19D-FBD1-4BD3-B564-FA458CB682E2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0855E84B-5319-4C26-9112-D6BD13C76750}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0855E84B-5319-4C26-9112-D6BD13C76750}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0855E84B-5319-4C26-9112-D6BD13C76750}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0855E84B-5319-4C26-9112-D6BD13C76750}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44989127-068C-4B25-AA5C-23EF5D3FE956}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44989127-068C-4B25-AA5C-23EF5D3FE956}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44989127-068C-4B25-AA5C-23EF5D3FE956}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44989127-068C-4B25-AA5C-23EF5D3FE956}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,7 @@ namespace BloodBankManagement.Domain.Entities
 {
     public class Donor : BaseEntity
     {
+
         //EF needs a parameterless constructor to instantiate the object before setting the property values
         private Donor() { }
         public Donor(string fullName, string email, DateTime birthDate, GenderEnum gender,
@@ -24,7 +25,9 @@ namespace BloodBankManagement.Domain.Entities
             BloodType = bloodType;
             RhFactor = rhFactor;
             Address = address;
+            Donations = new List<Donation>();
         }
+
         public string FullName { get; private set; }
         public string Email { get; private set; }
         public DateTime BirthDate { get; private set; }
@@ -33,28 +36,32 @@ namespace BloodBankManagement.Domain.Entities
         public BloodTypeEnum BloodType { get; private set; }
         public RhFactorEnum RhFactor { get; private set; }
         public Address Address { get; private set; }
-        public ICollection<Donation> Donations { get; set; }      
-
+        public ICollection<Donation> Donations { get; private set; }
         public bool CanDonateBlood(int quantityMl)
         {
+            if (!ValidQuantityToDonate(quantityMl))
+                return false;
+
             if (!ValidWeightToDonate(Weight))
                 return false;
 
             if (!ValidAgeToDonate(BirthDate))
                 return false;
-
-            if (!ValidQuantityToDonate(quantityMl))
-                return false;
-
-            var lastDonation = Donations.LastOrDefault();
-            if (lastDonation != null)
-            {
-                if (!ValidDonationInterval(lastDonation.DonationDate))
-                    return false;
-            }
+            
+            //var lastDonation = Donations.LastOrDefault();
+            //if (lastDonation != null)
+            //{
+            //    if (!ValidDonationInterval(lastDonation.DonationDate))
+            //        return false;
+            //}
 
             return true;
         }
+        //private bool ValidDonationInterval(DateTime lastDonationDate)
+        //{
+        //    int minimumDaysBetweenDonations = Gender == GenderEnum.Male ? -60 : -90;
+        //    return DateTime.Now.AddDays(minimumDaysBetweenDonations) > lastDonationDate;
+        //}
         private bool ValidWeightToDonate(double weight)
         {
             double minimumWeight = 50;
@@ -70,11 +77,6 @@ namespace BloodBankManagement.Domain.Entities
             int minimumQuantityMl = 420;
             int maximumQuantityMl = 470;
             return quantityMl >= minimumQuantityMl && quantityMl <= maximumQuantityMl;
-        }
-        private bool ValidDonationInterval(DateTime lastDonationDate)
-        {
-            int minimumDaysBetweenDonations = Gender == GenderEnum.Male ? -60 : -90;
-            return DateTime.Now.AddDays(minimumDaysBetweenDonations) > lastDonationDate;
         }
     }
 }
