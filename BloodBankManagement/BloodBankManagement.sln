@@ -12,8 +12,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodBankManagement.Application", "BloodBankManagement.Application\BloodBankManagement.Application.csproj", "{C788A19D-FBD1-4BD3-B564-FA458CB682E2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A9561BD-DB4C-46F0-ADE5-6F3282D49156}"
+	ProjectSection(SolutionItems) = preProject
+		.env = .env
+		docker-compose.yml = docker-compose.yml
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BloodBankManagement.UnitTests", "BloodBankManagement.UnitTests\BloodBankManagement.UnitTests.csproj", "{44989127-068C-4B25-AA5C-23EF5D3FE956}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BloodBankManagement.UnitTests", "BloodBankManagement.UnitTests\BloodBankManagement.UnitTests.csproj", "{44989127-068C-4B25-AA5C-23EF5D3FE956}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

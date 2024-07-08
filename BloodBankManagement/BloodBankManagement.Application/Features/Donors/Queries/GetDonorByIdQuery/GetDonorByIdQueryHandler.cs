@@ -24,7 +24,7 @@ namespace BloodBankManagement.Application.Features.Donors.Queries.GetDonorByIdQu
             if (donor == null)
             {
                 var errorType = ErrorEnum.NotFound;
-                var error = new ErrorModel(errorType, errorType.ToString(), "Donor couldn't be found.");
+                var error = new ErrorModel(errorType, errorType.ToString(), "Donor co uldn't be found.");
                 return Result<DonorDetailViewModel>.Failure(error);
             }
 

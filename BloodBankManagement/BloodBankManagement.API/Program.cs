@@ -8,12 +8,14 @@ namespace BloodBankManagement.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            //builder.Configuration.AddEnvironmentVariables();
+
             builder.Services.AddAllServices(builder.Configuration);
 
             var app = builder.Build();
-            app.ConfigureAllApp();
+            app.ConfigureAllApp(builder.Services);
 
-            app.Logger.LogInformation("Application started");
             app.Run();
         }
     }

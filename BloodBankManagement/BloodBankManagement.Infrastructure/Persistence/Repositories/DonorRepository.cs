@@ -1,6 +1,7 @@
 ﻿using BloodBankManagement.Domain.Entities;
 using BloodBankManagement.Domain.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,15 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
 {
     internal class DonorRepository : Repository<Donor>, IDonorRepository
     {
-        public DonorRepository(ApplicationDbContext dbContext) : base(dbContext)
+        private readonly ILogger<DonorRepository> _logger;
+        public DonorRepository(ApplicationDbContext dbContext, ILogger<DonorRepository> logger) : base(dbContext)
         {
+            _logger = logger;
         }
 
         public async Task<bool> EmailAlreadyRegistered(string email, CancellationToken cancellationToken = default(CancellationToken))
         {
+            _logger.LogInformation("Checking if email is already registered...");
             return await _context.Set<Donor>().Where(x => x.Email == email).AnyAsync(cancellationToken);
         }
 

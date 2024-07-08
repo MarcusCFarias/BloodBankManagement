@@ -8,6 +8,7 @@ using BloodBankManagement.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,15 +35,13 @@ namespace BloodBankManagement.Infrastructure
         }
         private static void AddDataBaseContext(this IServiceCollection services, IConfiguration configuration)
         {
-            
             services.AddDbContext<ApplicationDbContext>(options =>
             {
-                //var host = Environment.GetEnvironmentVariable("DB_HOST");
-                //var name = Environment.GetEnvironmentVariable("DB_NAME");
-                //var user = Environment.GetEnvironmentVariable("DB_USER");
-                //var password = Environment.GetEnvironmentVariable("DB_PASSWORD");
-                var connectionString = configuration.GetConnectionString("DefaultConnection");
-                //var connectionString = $"Server={host};Database={name};User Id={user};Password={password};Trusted_Connection=True;MultipleActiveResultSets=true";
+                var database = Environment.GetEnvironmentVariable("MSSQL_DATABASE");
+                var user = Environment.GetEnvironmentVariable("MSSQL_USER");
+                var password = Environment.GetEnvironmentVariable("MSSQL_SA_PASSWORD");
+
+                var connectionString = $"Server=db;Database={database};User Id={user};Password={password};TrustServerCertificate=true;MultipleActiveResultSets=true;";
 
                 options.UseSqlServer(connectionString);
             });
@@ -53,7 +52,5 @@ namespace BloodBankManagement.Infrastructure
             services.AddHttpClient();
             services.AddScoped<IAddressService, AddressService>();
         }
-
-       
     }
 }

@@ -15,7 +15,7 @@ namespace BloodBankManagement.API.Configuration
             
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
-            services.AddExceptionHandler<GlobalExpectionHandler>();
+            services.AddExceptionHandler<GlobalExpectionHandler>();            
 
             return services;
         }

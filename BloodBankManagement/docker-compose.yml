@@ -1,8 +1,49 @@
+# Docker-Compose do projeto
+
 version: '3.4'
 
+networks:
+  network-db:
+    name: network-db
+    driver: bridge
+
+volumes:
+  bloodbankmanagement-db:
+    name: bloodbankmanagement-db
+
 services:
-  bloodbankmanagement.api:
-    image: ${DOCKER_REGISTRY-}bloodbankmanagementapi
+  api:
+    container_name: app-api
+    image: app-api
     build:
       context: .
-      dockerfile: BloodBankManagement.API\Dockerfile
+      dockerfile: BloodBankManagement.API/Dockerfile
+    ports:
+      - "8080:80"
+      # - "8081:443"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+      # - ASPNETCORE_URLS=https://+:443
+      - MSSQL_DATABASE=${MSSQL_DATABASE}
+      - MSSQL_USER=${MSSQL_USER}
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+    depends_on:
+      - db
+    networks: 
+      - network-db
+
+  db:
+    container_name: app-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - MSSQL_DATABASE=${MSSQL_DATABASE}
+      - MSSQL_USER=${MSSQL_USER}
+      - MSSQL_SA_PASSWORD=${MSSQL_SA_PASSWORD}
+      - ACCEPT_EULA=Y
+    volumes:
+      - bloodbankmanagement-db:/var/opt/mssql
+    networks:
+      - network-db

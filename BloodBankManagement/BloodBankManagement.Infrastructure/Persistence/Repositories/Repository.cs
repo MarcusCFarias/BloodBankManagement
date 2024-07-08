@@ -5,6 +5,7 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
         protected readonly ApplicationDbContext _context;
+
         protected Repository(ApplicationDbContext dbContext)
         {
             _context = dbContext;

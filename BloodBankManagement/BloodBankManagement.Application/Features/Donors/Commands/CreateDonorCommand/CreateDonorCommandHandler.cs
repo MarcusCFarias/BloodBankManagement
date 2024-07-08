@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using BloodBankManagement.Domain.ValueObjects;
 using BloodBankManagement.Application.Features.Common.Result;
 using BloodBankManagement.Application.Features.Common.Interfaces;
+using Microsoft.Extensions.Logging;
 
 namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCommand
 {
@@ -16,15 +17,19 @@ namespace BloodBankManagement.Application.Features.Donors.Commands.CreateDonorCo
     {
         private readonly IDonorRepository _donorRepository;
         private readonly IAddressService _addressService;
-        public CreateDonorCommandHandler(IDonorRepository donorRepository, IAddressService addressService)
+        private readonly ILogger<CreateDonorCommandHandler> _logger;
+        public CreateDonorCommandHandler(IDonorRepository donorRepository, IAddressService addressService, ILogger<CreateDonorCommandHandler> logger)
         {
             _donorRepository = donorRepository;
             _addressService = addressService;
+            _logger = logger;
         }
 
         public async Task<Result<int>> Handle(CreateDonorCommand request, CancellationToken cancellationToken)
         {
+            _logger.LogInformation("Starting CreateDonorCommandHandler.Handle...\n\n");
             var boolRegisteredEmail = await _donorRepository.EmailAlreadyRegistered(request.Email, cancellationToken);
+            _logger.LogInformation("Check email...\n\n");
             if (boolRegisteredEmail)
             {
                 var errorModel = new ErrorModel(
