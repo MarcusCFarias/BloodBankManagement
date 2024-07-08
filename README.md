@@ -20,10 +20,19 @@ Blood Bank Management</h1>
 
 ## 5. Patterns and Architecture
 
-## 6. Getting started
+## 6. Running on your machine
+- .NET SDK (version 8.0)
+- Docker Desktop
 
-## 7. Contribuiting
+## 7. Getting started
+#### 1. Clone the repository
+```
+git clone https://github.com/MarcusCFarias/BloodBankManagement.git
+```
+
+
+## 8. Contribuiting
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project just ask...
 
-## 8. License
+## 9. License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MarcusCFarias/BloodBankManagement/blob/main/LICENSE) file for details
