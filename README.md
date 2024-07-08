@@ -12,7 +12,6 @@ Blood Bank Management</h1>
 ## 1. Screenshots or Demo
 
 ## 2. About this project
-#### 2.1 Description
 BloodBankManagement is a project designed in ASP.NET Core to practice new trends and technologies in software development. It offers hands-on experience with modern tools and methodologies, promoting growth and adaptability. Additionally, the project enables the exploration of efficient coding practices and project management skills, enhancing my ability to deliver high-quality software solutions.
 
 ## 3. Functionalities
@@ -27,20 +26,19 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - Send email when the storage is above minimum
 - Some business rules on domain
 
-## 4. Technologies Used, Patterns and Architecture
+## 4. Technologies Used, Frameworks, Patterns and Architecture
 - ASP .NET 8
 - Entity Framework Core
 - SQL Server
 - Docker Container
 - Repository Pattern
+- Result Pattern
 - Domain Event Pattern
 - Migrations
 - Fluent Validation
-- MediatR
-- CQRS
+- CQRS using MediatR
 - Clean Architecture
 - Send emails with MailKit
-- Result Pattern
 - Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
 ## 5. Running on your machine
