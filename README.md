@@ -57,7 +57,7 @@ git clone https://github.com/MarcusCFarias/BloodBankManagement.git
 cd BloodBankManagement
 ```
 
-#### 6.3 Open cmd and run docker compose file
+#### 6.3 Run docker compose file
 ```
 docker compose up --build -d
 ```
