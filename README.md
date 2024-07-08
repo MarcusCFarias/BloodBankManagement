@@ -25,6 +25,10 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - CSV report from the actual state of storage
 
 ## 4. Technologies Used
+- ASP .NET 8
+- Entity Framework Core
+- SQL Server
+- Docker Container
 
 ## 5. Patterns and Architecture
 
