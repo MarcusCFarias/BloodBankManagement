@@ -25,11 +25,19 @@ Blood Bank Management</h1>
 - Docker Desktop
 
 ## 7. Getting started
-#### 1. Clone the repository
+#### 7.1 Clone the repository
 ```
 git clone https://github.com/MarcusCFarias/BloodBankManagement.git
 ```
+#### 7.2 Navigate to the project directory
+```
+cd BloodBankManagement
+```
 
+#### 7.3 Open cmd and run docker compose file
+```
+docker compose up --build -d
+```
 
 ## 8. Contribuiting
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project just ask...
