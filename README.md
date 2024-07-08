@@ -40,6 +40,7 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - CQRS
 - Clean Architecture
 - MailKit
+- Result Pattern
 - Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
 ## 5. Running on your machine
