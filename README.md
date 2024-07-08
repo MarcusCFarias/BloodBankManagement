@@ -16,6 +16,13 @@ Blood Bank Management</h1>
 BloodBankManagement is a project designed in ASP.NET Core to practice new trends and technologies in software development. It offers hands-on experience with modern tools and methodologies, promoting growth and adaptability. Additionally, the project enables the exploration of efficient coding practices and project management skills, enhancing my ability to deliver high-quality software solutions.
 
 ## 3. Functionalities
+- Create and get Donor
+- Validate CEP with external API
+- CSV report with donor's activity
+- Create donation
+- CSV report from the last 30 days of donation
+- Update storage
+- CSV report from the actual state of storage
 
 ## 4. Technologies Used
 
