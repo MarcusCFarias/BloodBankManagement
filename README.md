@@ -27,35 +27,36 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - Send email when the storage is above minimum
 - Some business rules on domain
 
-## 4. Technologies Used
+## 4. Technologies Used, Patterns and Architecture
 - ASP .NET 8
 - Entity Framework Core
 - SQL Server
 - Docker Container
+- Repository Pattern
+- Domain Event Pattern
+- Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
-## 5. Patterns and Architecture
-
-## 6. Running on your machine
+## 5. Running on your machine
 - .NET SDK (version 8.0)
 - Docker Desktop
 
-## 7. Getting started
-#### 7.1 Clone the repository
+## 6. Getting started
+#### 6.1 Clone the repository
 ```
 git clone https://github.com/MarcusCFarias/BloodBankManagement.git
 ```
-#### 7.2 Navigate to the project directory
+#### 6.2 Navigate to the project directory
 ```
 cd BloodBankManagement
 ```
 
-#### 7.3 Open cmd and run docker compose file
+#### 6.3 Open cmd and run docker compose file
 ```
 docker compose up --build -d
 ```
 
-## 8. Contribuiting
+## 7. Contribuiting
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project just ask...
 
-## 9. License
+## 8. License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MarcusCFarias/BloodBankManagement/blob/main/LICENSE) file for details
