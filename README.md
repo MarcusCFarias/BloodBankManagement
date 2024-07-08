@@ -39,7 +39,7 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - MediatR
 - CQRS
 - Clean Architecture
-- MailKit
+- Send emails with MailKit
 - Result Pattern
 - Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
