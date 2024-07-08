@@ -34,6 +34,12 @@ BloodBankManagement is a project designed in ASP.NET Core to practice new trends
 - Docker Container
 - Repository Pattern
 - Domain Event Pattern
+- Migrations
+- Fluent Validation
+- MediatR
+- CQRS
+- Clean Architecture
+- MailKit
 - Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
 ## 5. Running on your machine
