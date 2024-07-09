@@ -17,7 +17,7 @@ Blood Bank Management</h1>
 
 ## 2. About this project
 #### 2.1 Description
-
+BloodBankManagement is a comprehensive project developed using ASP.NET Core, aimed at simulating a blood bank management system. This project showcases a Web API built with .NET 8, providing an in-depth example of how to manage various aspects of a blood bank, including donor registration, blood inventory, and blood transfusion records.
 #### 2.2 Why?
 BloodBankManagement is a project designed in ASP.NET Core to practice new trends and technologies in software development. It offers hands-on experience with modern tools and methodologies, promoting growth and adaptability. Additionally, the project enables the exploration of efficient coding practices and project management skills, enhancing my ability to deliver high-quality software solutions.
 
