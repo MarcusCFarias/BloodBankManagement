@@ -10,8 +10,10 @@ Blood Bank Management</h1>
 </p>
 
 ## 1. Screenshots or Demo
-
-![Demo](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/ff870d9b-ca20-48af-ae2c-37fc1a1d8fc7)
+![ApiEndpoints](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/9e3d01aa-e242-43b7-938c-0ffccc13fd84)
+![AppOnDocker](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/0c82e2fe-8779-42dd-9746-32f50c32f51b)
+![UnitTestsReport](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/c1f96d4b-e2f5-420e-bf49-38d56620bd2f)
+![Demo Video](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/ff870d9b-ca20-48af-ae2c-37fc1a1d8fc7)
 
 ## 2. About this project
 #### 2.1 Description
