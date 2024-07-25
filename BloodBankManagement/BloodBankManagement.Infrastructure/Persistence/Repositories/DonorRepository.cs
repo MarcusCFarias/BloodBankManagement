@@ -20,12 +20,14 @@ namespace BloodBankManagement.Infrastructure.Persistence.Repositories
 
         public async Task<bool> EmailAlreadyRegistered(string email, CancellationToken cancellationToken = default(CancellationToken))
         {
-            _logger.LogInformation("Checking if email is already registered...");
+            //_logger.LogInformation("Checking if email is already registered...");
             return await _context.Set<Donor>().Where(x => x.Email == email).AnyAsync(cancellationToken);
         }
 
         public async Task<Donor?> GetDonorByIdWithDonations(int donorId, CancellationToken cancellationToken = default)
         {
+            _logger.LogInformation("Get Donor By Id With Donations");
+
             return await _context.Set<Donor>()
                 .Where(x => x.Id == donorId)
                 .Include(x => x.Donations)

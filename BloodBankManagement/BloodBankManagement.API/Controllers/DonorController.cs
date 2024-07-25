@@ -41,7 +41,7 @@ namespace BloodBankManagement.API.Controllers
             return BadRequest(result.Error);
         }
         [HttpGet("history")]
-        public async Task<IActionResult> GetDonorHistory(int donorId)
+        public async Task<IActionResult> GetDonorHistory([FromQuery] int donorId)
         {
             var query = new GetDonorHistoryQuery(donorId);
             var result = await _mediator.Send(query);

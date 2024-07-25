@@ -47,21 +47,21 @@ namespace BloodBankManagement.Domain.Entities
 
             if (!ValidAgeToDonate(BirthDate))
                 return false;
-            
-            //var lastDonation = Donations.LastOrDefault();
-            //if (lastDonation != null)
-            //{
-            //    if (!ValidDonationInterval(lastDonation.DonationDate))
-            //        return false;
-            //}
+
+            var lastDonation = Donations.LastOrDefault();
+            if (lastDonation != null)
+            {
+                if (!ValidDonationInterval(lastDonation.DonationDate))
+                    return false;
+            }
 
             return true;
         }
-        //private bool ValidDonationInterval(DateTime lastDonationDate)
-        //{
-        //    int minimumDaysBetweenDonations = Gender == GenderEnum.Male ? -60 : -90;
-        //    return DateTime.Now.AddDays(minimumDaysBetweenDonations) > lastDonationDate;
-        //}
+        private bool ValidDonationInterval(DateTime lastDonationDate)
+        {
+            int minimumDaysBetweenDonations = Gender == GenderEnum.Male ? -60 : -90;
+            return DateTime.Now.AddDays(minimumDaysBetweenDonations) > lastDonationDate;
+        }
         private bool ValidWeightToDonate(double weight)
         {
             double minimumWeight = 50;
