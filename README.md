@@ -10,37 +10,65 @@ Blood Bank Management</h1>
 </p>
 
 ## 1. Screenshots or Demo
+![ApiEndpoints](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/9e3d01aa-e242-43b7-938c-0ffccc13fd84)
+![AppOnDocker](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/0c82e2fe-8779-42dd-9746-32f50c32f51b)
+![UnitTestsReport](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/c1f96d4b-e2f5-420e-bf49-38d56620bd2f)
+[![Demo Video](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/7dec173f-3f01-4eda-a26e-241c785bba24)](https://github.com/MarcusCFarias/BloodBankManagement/assets/77988058/833f4957-9e83-4a17-82fd-f0fc0c76cefa)
 
 ## 2. About this project
 #### 2.1 Description
+BloodBankManagement is a comprehensive project developed using ASP.NET Core, aimed at simulating a blood bank management system. This project showcases a Web API built with .NET 8, providing an in-depth example of how to manage various aspects of a blood bank, including donor registration, blood inventory, and blood transfusion records.
+#### 2.2 Why?
+BloodBankManagement is a project designed in ASP.NET Core to practice new trends and technologies in software development. It offers hands-on experience with modern tools and methodologies, promoting growth and adaptability. Additionally, the project enables the exploration of efficient coding practices and project management skills, enhancing my ability to deliver high-quality software solutions.
 
 ## 3. Functionalities
+- Create and get Donor
+- Validate CEP with external API
+- CSV report with donor's activity
+- Create donation
+- CSV report from the last 30 days of donation
+- Update storage
+- CSV report from the actual state of storage
+- Global Error handling with middleware
+- Send email when the storage is above minimum
+- Some business rules on domain
 
-## 4. Technologies Used
+## 4. Technologies Used, Frameworks, Patterns and Architecture
+- ASP .NET 8
+- Entity Framework Core
+- SQL Server
+- Docker Container
+- Repository Pattern
+- Result Pattern
+- Domain Event Pattern
+- Migrations
+- Fluent Validation
+- CQRS using MediatR
+- Clean Architecture
+- Send emails with MailKit
+- Unit Tests using xUnit, Bogus, FluentAssertions, Coverlet and Moq
 
-## 5. Patterns and Architecture
-
-## 6. Running on your machine
+## 5. Running on your machine
 - .NET SDK (version 8.0)
 - Docker Desktop
 
-## 7. Getting started
-#### 7.1 Clone the repository
+## 6. Getting started
+#### 6.1 Clone the repository
 ```
 git clone https://github.com/MarcusCFarias/BloodBankManagement.git
 ```
-#### 7.2 Navigate to the project directory
+#### 6.2 Navigate to the project directory
 ```
 cd BloodBankManagement
 ```
 
-#### 7.3 Open cmd and run docker compose file
+#### 6.3 Run docker compose file
 ```
 docker compose up --build -d
 ```
 
-## 8. Contribuiting
+## 7. Contribuiting
 You can send how many PR's do you want, I'll be glad to analyse and accept them! And if you have any question about the project just ask...
 
-## 9. License
+## 8. License
 This project is licensed under the MIT License - see the [LICENSE.md](https://github.com/MarcusCFarias/BloodBankManagement/blob/main/LICENSE) file for details
